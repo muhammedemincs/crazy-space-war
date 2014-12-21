@@ -1,3 +1,7 @@
+/**
+ *
+ * @author omerhanci
+ */
 package view;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
@@ -17,7 +21,7 @@ public class SpaceWar {
             @Override
             public void run() {
                 
-                new SpaceWar();//create an instance which incudes GUI etc
+                new SpaceWar();//create an instance which includes GUI etc
             }
         });
     }

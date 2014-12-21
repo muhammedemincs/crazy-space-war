@@ -1,3 +1,7 @@
+/**
+ *
+ * @author omerhanci
+ */
 package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -8,6 +12,8 @@ public class GUIManager {
 	private JPanel currentPanel;
 	private HelpPanel helpPanel;
 	private MenuPanel menuPanel;
+	private GamePanel gamePanel;
+//	private GameEngine gameEngine;
 	
 	public GUIManager(JFrame f){
 		frame = f;
@@ -21,5 +27,15 @@ public class GUIManager {
 		frame.getContentPane().add(panel);
 		frame.pack();
 		frame.setVisible(true);
+	}
+	public void draw(){
+		gamePanel.draw();
+	}
+	public void drawToScreen(){
+		gamePanel.drawToScreen();
+	}
+	public void startGame(){
+		gamePanel.init();
+//		gameEngine.start();
 	}
 }

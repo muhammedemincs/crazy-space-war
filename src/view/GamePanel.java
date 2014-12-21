@@ -1,7 +1,16 @@
+/**
+ *
+ * @author omerhanci
+ */
 package view;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
+
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Polygon;
+import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -11,11 +20,17 @@ import javax.swing.JPanel;
 
 
 public class GamePanel extends javax.swing.JPanel{
+	private GameMap map;
+    private GameEngine gameEngine;
+    private SpaceShip ship;
+    private ArrayList<Enemy> enemies;
+
 	
 	//Panel Dimensions
 	public static final int WIDTH = 520;
 	public static final int HEIGHT = 240;
 	public static final int SCALE = 2;
+	
 	
 	//Drawing 
 	private Graphics2D g;
@@ -23,6 +38,7 @@ public class GamePanel extends javax.swing.JPanel{
 	
 	public GamePanel()
 	{
+		super(true);
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		setFocusable(true);
 		requestFocus();
@@ -39,10 +55,19 @@ public class GamePanel extends javax.swing.JPanel{
 		g = (Graphics2D) image.getGraphics();
 	}
 	
-	public void draw()
+	public void draw(Graphics2D g2d)
 	{
-		//öylesine yazdým burda iste tek tek objeleri cizcen
-		g.clearRect(0, 0, WIDTH, HEIGHT);
+		map = new GameMap(WIDTH,HEIGHT);
+		g2d.setColor(Color.BLUE);
+        g2d.fillRect(0, 0, 1000, 600);
+        g2d.setColor(Color.BLACK);
+        map.draw(g2d);
+        g2d.setColor(Color.WHITE);
+        map.fill(g2d);
+        g2d.drawImage(ship.getCurrentImage(), ship.getX(), ship.getY(), null);
+        g2d.drawImage(enemies.getCurrentImage(), enemies.getX(), enemies.getY(), null);
+		
+		repaint();
 	}
 	
 	public void drawToScreen()
@@ -50,6 +75,7 @@ public class GamePanel extends javax.swing.JPanel{
 		Graphics g2 = getGraphics();
 		g2.drawImage(image, 0, 0, WIDTH * SCALE, WIDTH * SCALE, null);
 		g2.dispose();
+		repaint();
 	}
 	
 	//ATTENTION!!
@@ -63,10 +89,10 @@ public class GamePanel extends javax.swing.JPanel{
 		//then
 		if( gameEngine.isIntop(score))
 		{
-			//ask for name do sth sth
+			//ask for name do sth 
 			String name;	// get name
 			gameEngine.updateHighScore(name, score);
-			//burdan sonra listeyi gösterebiliriz
+			//burdan sonra listeyi gosterebiliriz
 		}
 	}
 }
