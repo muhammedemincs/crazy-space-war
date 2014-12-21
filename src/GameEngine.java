@@ -1,9 +1,10 @@
 import java.util.Vector;
+import view.*;
 
 
 public class GameEngine {
 	private GameMap gameMap;
-	private GamePanel gamePanel;
+	private GUIManager guiManager;
 	private PhysicsEngine physicsEngine;
 	
 	private int score;
@@ -23,10 +24,10 @@ public class GameEngine {
 	private long targetTime = 1000 / FPS;
 	
 	//Constructor
-	GameEngine( GamePanel gamePanel, GameMap gameMap, int level, int diff)
+	GameEngine( GUIManager guiManager, GameMap gameMap, int level, int diff)
 	{
 		this.gameMap = gameMap;
-		this.gamePanel = gamePanel;
+		this.guiManager = guiManager;
 		this.level = level;
 		this.difficulty = diff;
 		score = 0;
@@ -36,6 +37,12 @@ public class GameEngine {
 		spacePressed = false;
 		powerUp = 0;
 		physicsEngine = new PhysicsEngine( gameMap);
+	}
+	
+	//Getter
+	int getScore()
+	{
+		return score;
 	}
 	
 	//Setter
@@ -65,8 +72,6 @@ public class GameEngine {
 	//game loop
 	public void run()
 	{
-		gamePanel.init();
-		
 		long start;
 		long elapsed;
 		long wait;
@@ -76,8 +81,8 @@ public class GameEngine {
 			start = System.nanoTime();
 			
 			updateGame();
-			gamePanel.draw();
-			gamePanel.drawToScreen();
+			guiManager.draw();
+			guiManager.drawToScreen();
 			
 			elapsed = System.nanoTime() - start;
 			wait = targetTime - elapsed / 1000000;
@@ -91,7 +96,7 @@ public class GameEngine {
 			
 		}
 		
-		gamePanel.endGame(); //end game and show score 
+		guiManager.endGame(); //end game and show score 
 							//calls isInTop() & ask for name etc.
 	}
 	 
