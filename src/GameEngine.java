@@ -123,6 +123,11 @@ public class GameEngine {
 		return gameMap.setShipModel(model);
 	}
 	
+	public int getEnemyCount()
+	{
+		return physicsEngine.getEnemyCount();
+	}
+	
 	public boolean isDestroyed()
 	{
 		if( remainingLife == 0)
