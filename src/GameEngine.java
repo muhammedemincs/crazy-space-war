@@ -4,6 +4,7 @@ import view.*;
 
 public class GameEngine {
 	private GameMap gameMap;
+	private GameData gameData;
 	private GUIManager guiManager;
 	private PhysicsEngine physicsEngine;
 	
@@ -24,9 +25,10 @@ public class GameEngine {
 	private long targetTime = 1000 / FPS;
 	
 	//Constructor
-	GameEngine( GUIManager guiManager, GameMap gameMap, int level, int diff)
+	GameEngine( GUIManager guiManager, GameMap gameMap, GameData gameData, int level, int diff)
 	{
 		this.gameMap = gameMap;
+		this.gameData = gameData;
 		this.guiManager = guiManager;
 		this.level = level;
 		this.difficulty = diff;
@@ -146,18 +148,18 @@ public class GameEngine {
 	
 	public Vector getHighScores()
 	{
-		return gameMap.getHighScores();
+		return gameData.getHighScores();
 	}
 	
 	public boolean isInTop(int score)
 	{
-		return gameMap.isInTop(score);
+		return gameData.isInTop(score);
 		
 	}
 	
 	public void updateHighScores(String name, int score)
 	{
-		gameMap.updateHighScores(name, score);
+		gameData.updateHighScores(name, score);
 	}
 		
 }
