@@ -24,6 +24,32 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class HighScorePanel extends javax.swing.JPanel {
 		
+	public String player1,player2,player3,player4,player5;
+	public String score1,score2,score3,score4,score5;
+	public void editHighScore(String name, int score, int place){
+		if(place == 1){
+			player1 = name;
+			score1 = String.valueOf(score);
+		}
+		else if(place == 2){
+			player2 = name;
+			score2 = String.valueOf(score);
+		}
+		else if(place == 3){
+			player3 = name;
+			score3 = String.valueOf(score);
+		}
+		else if(place == 4){
+			player4 = name;
+			score4 = String.valueOf(score);
+		}
+		else{
+			player5 = name;
+			score5 = String.valueOf(score);
+		}
+			
+	}
+	
 	public HighScorePanel(){
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -31,6 +57,7 @@ public class HighScorePanel extends javax.swing.JPanel {
 				new SpaceWar();
 			}
 		});
+		
 		
 		JLabel lblHighScores = new JLabel("High Scores");
 		
@@ -44,25 +71,26 @@ public class HighScorePanel extends javax.swing.JPanel {
 		
 		JLabel label_4 = new JLabel("5");
 		
-		JLabel lblScore = new JLabel("score");
+		JLabel lblScore = new JLabel(score1);
 		
-		JLabel lblScore_1 = new JLabel("score");
+		JLabel lblScore_1 = new JLabel(score2);
 		
-		JLabel lblScore_2 = new JLabel("score");
+		JLabel lblScore_2 = new JLabel(score3);
 		
-		JLabel lblScore_3 = new JLabel("score");
+		JLabel lblScore_3 = new JLabel(score4);
 		
-		JLabel lblScore_4 = new JLabel("score");
+		JLabel lblScore_4 = new JLabel(score5);
 		
-		JLabel lblPlayer = new JLabel("Player1");
+		JLabel lblPlayer = new JLabel(player1);
 		
-		JLabel lblPlayer_1 = new JLabel("Player2");
+		JLabel lblPlayer_1 = new JLabel(player2);
 		
-		JLabel lblPlayer_2 = new JLabel("Player3");
+		JLabel lblPlayer_2 = new JLabel(player3);
 		
-		JLabel lblPlayer_3 = new JLabel("Player4");
+		JLabel lblPlayer_3 = new JLabel(player4);
 		
-		JLabel lblPlayer_4 = new JLabel("Player5");
+		JLabel lblPlayer_4 = new JLabel(player5);
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -134,4 +162,5 @@ public class HighScorePanel extends javax.swing.JPanel {
 		);
 		setLayout(groupLayout);
 	}
+	
 }

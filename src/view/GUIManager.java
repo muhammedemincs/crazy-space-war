@@ -4,6 +4,7 @@
  */
 package view;
 import javax.swing.JFrame;
+import java.awt.Graphics2D;
 import javax.swing.JPanel;
 public class GUIManager {
 	private final static int WIDTH = 1000;
@@ -14,6 +15,7 @@ public class GUIManager {
 	private MenuPanel menuPanel;
 	private GamePanel gamePanel;
 //	private GameEngine gameEngine;
+	private Graphics2D g2d;
 	
 	public GUIManager(JFrame f){
 		frame = f;
@@ -29,7 +31,7 @@ public class GUIManager {
 		frame.setVisible(true);
 	}
 	public void draw(){
-		gamePanel.draw();
+		gamePanel.draw(g2d);
 	}
 	public void drawToScreen(){
 		gamePanel.drawToScreen();

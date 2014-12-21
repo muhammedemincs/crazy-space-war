@@ -23,6 +23,7 @@ public class GamePanel extends javax.swing.JPanel{
 	private GameMap map;
     private GameEngine gameEngine;
     private SpaceShip ship;
+    private HighScorePanel highScorePanel;
     private ArrayList<Enemy> enemies;
 
 	
@@ -93,6 +94,7 @@ public class GamePanel extends javax.swing.JPanel{
 			String name;	// get name
 			gameEngine.updateHighScore(name, score);
 			//burdan sonra listeyi gosterebiliriz
+			highScorePanel.editHighScore(name,score,place);
 		}
 	}
 }
