@@ -164,7 +164,7 @@ public class PhysicsEngine {
 		return false;
 	}
 }
-	//return number of remaining enemies, TODO
+	//return number of remaining enemies
 	public int getEnemyCount() {
-		
+		return gameMap.enemies.length;
 	}
