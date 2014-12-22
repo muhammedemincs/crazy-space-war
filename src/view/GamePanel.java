@@ -6,14 +6,18 @@ package view;
 
 import java.awt.Dimension;
 
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
-import java.util.ArrayList;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import javax.swing.*;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
@@ -23,9 +27,12 @@ public class GamePanel extends javax.swing.JPanel{
 	private GameMap map;
     private GameEngine gameEngine;
     private SpaceShip ship;
+    private ArrayList<Fire> fires;
     private HighScorePanel highScorePanel;
     private ArrayList<Enemy> enemies;
+    private JPanel panel;
 
+    public static final int WHEN = JComponent.WHEN_IN_FOCUSED_WINDOW;
 	
 	//Panel Dimensions
 	public static final int WIDTH = 520;
@@ -66,9 +73,14 @@ public class GamePanel extends javax.swing.JPanel{
         g2d.setColor(Color.WHITE);
         map.fill(g2d);
         g2d.drawImage(ship.getCurrentImage(), ship.getX(), ship.getY(), null);
-        g2d.drawImage(enemies.getCurrentImage(), enemies.getX(), enemies.getY(), null);
-		
-		repaint();
+        for(int i = 0; i < enemies.size(); i++){
+        	g2d.drawImage(enemies.get(i).getCurrentImage(), enemies.get(i).getX(), enemies.get(i).getY(), null);
+        }
+        for(int i = 0; i < fires.size(); i++){
+        	g2d.drawImage(fires.get(i).getCurrentImage(), fires.get(i).getX(), fires.get(i).getY(), null);
+        }
+        g2d.drawImage(fire.getCurrentImage(), fire.getX(), fire.getY(), null);
+		repaint();	
 	}
 	
 	public void drawToScreen()
@@ -97,4 +109,51 @@ public class GamePanel extends javax.swing.JPanel{
 			highScorePanel.editHighScore(name,score,place);
 		}
 	}
+	public void keyController(){
+		bind(KeyEvent.VK_RIGHT, new AbstractAction(){
+			@Override
+			public void actionPerformed(ActionEvent ae){
+			gameEngine.setRightPressed(true);
+		}
+		}, "right pressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                gameEngine.setRightPressed(false);
+            }
+        }, "right released");
+        
+        bind(KeyEvent.VK_LEFT, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                gameEngine.setLeftPressed(true);
+            }
+        }, "left pressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                gameEngine.leftPressed = false;
+            }
+        }, "left released");
+       
+        bind(KeyEvent.VK_SPACE, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                gameEngine.setSpacePressed(true);
+            }
+        }, "space pressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                gameEngine.setSpacePressed(false);
+            }
+        }, "space released");
+	}
+	private void bind(int key, AbstractAction onPressAction, String onPressDescription,
+            AbstractAction onReleaseAction, String onReleaseDescription) {
+        
+        InputMap inputMap = panel.getInputMap(WHEN);
+        ActionMap actionMap = panel.getActionMap();
+        inputMap.put(KeyStroke.getKeyStroke(key,0,false), onPressDescription);
+        actionMap.put(onPressDescription, onPressAction);
+        inputMap.put(KeyStroke.getKeyStroke(key,0,true), onReleaseDescription);
+        actionMap.put(onReleaseDescription, onReleaseAction);
+    }
 }

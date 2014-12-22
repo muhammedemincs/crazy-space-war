@@ -38,6 +38,6 @@ public class GUIManager {
 	}
 	public void startGame(){
 		gamePanel.init();
-//		gameEngine.start();
+//		gameEngine.gameStart();
 	}
 }
