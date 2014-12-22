@@ -1,3 +1,7 @@
+/**
+ *
+ * @author omerhanci
+ */
 package view;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -11,36 +15,30 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MenuPanel extends javax.swing.JPanel {
 	GUIManager guiManager;
 	private HelpPanel helpPanel;
 	private HighScorePanel highScorePanel;
 	private SettingsPanel settingsPanel;
+	private GamePanel gamePanel;
 	private JFrame f;
 	
 	public MenuPanel(GUIManager guiManager) {
 		this.guiManager = guiManager;
 		initComponents();
 	}
-	private void initComponents(){
-		setLayout(new FormLayout(new ColumnSpec[] {
-				ColumnSpec.decode("141px"),
-				ColumnSpec.decode("152px"),},
-			new RowSpec[] {
-				RowSpec.decode("30px"),
-				RowSpec.decode("29px"),
-				RowSpec.decode("28px"),
-				RowSpec.decode("29px"),
-				FormFactory.UNRELATED_GAP_ROWSPEC,
-				RowSpec.decode("29px"),
-				FormFactory.UNRELATED_GAP_ROWSPEC,
-				RowSpec.decode("29px"),
-				RowSpec.decode("22px"),
-				RowSpec.decode("29px"),}));
+	private void initComponents() {
 		
 		JButton btnStartGame = new JButton("Start Game");
-		add(btnStartGame, "2, 2, center, top");
+		btnStartGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				guiManager.startGame();
+			}
+		});
 			
 			JButton btnViewHighScores = new JButton("View High Scores");
 			btnViewHighScores.addActionListener(new ActionListener() {
@@ -49,7 +47,6 @@ public class MenuPanel extends javax.swing.JPanel {
 					guiManager.setPanel(highScorePanel);
 				}
 			});
-			add(btnViewHighScores, "2, 3, left, top");
 			
 				JButton btnSettings = new JButton("Settings");
 				btnSettings.addActionListener(new ActionListener() {
@@ -58,7 +55,6 @@ public class MenuPanel extends javax.swing.JPanel {
 						guiManager.setPanel(settingsPanel);
 					}
 				});
-				add(btnSettings, "2, 4, center, top");
 			
 			JButton btnHelp = new JButton("Help");
 			btnHelp.addActionListener(new ActionListener() {
@@ -67,10 +63,39 @@ public class MenuPanel extends javax.swing.JPanel {
 					guiManager.setPanel(helpPanel);
 				}
 			});
-			add(btnHelp, "2, 6, center, top");
-			
-			JButton btnCredits = new JButton("Credits");
-			add(btnCredits, "2, 8, center, top");
+			GroupLayout groupLayout = new GroupLayout(this);
+			groupLayout.setHorizontalGroup(
+				groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createSequentialGroup()
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(178)
+								.addComponent(btnHelp))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(169)
+								.addComponent(btnSettings))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(141)
+								.addComponent(btnViewHighScores))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(161)
+								.addComponent(btnStartGame)))
+						.addContainerGap(157, Short.MAX_VALUE))
+			);
+			groupLayout.setVerticalGroup(
+				groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createSequentialGroup()
+						.addGap(42)
+						.addComponent(btnStartGame)
+						.addGap(18)
+						.addComponent(btnViewHighScores, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addComponent(btnSettings)
+						.addGap(18)
+						.addComponent(btnHelp)
+						.addGap(89))
+			);
+			setLayout(groupLayout);
 	}
 
 }
