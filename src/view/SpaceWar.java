@@ -2,6 +2,8 @@
  *
  * @author omerhanci
  */
+
+// oo class alõrõm bi dal
 package view;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
