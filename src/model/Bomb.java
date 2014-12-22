@@ -25,7 +25,7 @@ public class Bomb extends GameObject {
 	//Constructor
 	public Bomb(int bombType, int x, int y,  Rectangle bounds)
 	{
-		this.setBombType(bombType);
+		this.setBombType(bombType); // GitHub push deneme
 		this.setKind(bombType);
 		this.xPos=x;
 		this.yPos=y;
