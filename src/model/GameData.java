@@ -12,8 +12,24 @@ public class GameData
 	//Properties
 	GameLevel level ;
 	Settings setting ;
+	private int[] topList;
 	
 	//Methods
+	
+	
+	public GameData()
+	{
+		level = new GameLevel() ;
+		setting = new Settings();
+		topList = new int[3];
+		
+		
+		
+		
+	}
+	
+	
+	
 	
 	public void  writeToFileExample(String str) {
 		

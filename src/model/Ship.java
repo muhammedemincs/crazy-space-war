@@ -18,7 +18,9 @@ public class Ship extends GameObject
 	
 	private  BufferedImage image ;
 	//Ben haraket olarak cell tan›mlad›m
-	final int r;
+	
+	//carpısma algoritması için gemi bi circle ve r si var
+	final int r=10;
 	
 	//private int x , y ;
 	Rectangle bounds;
@@ -26,12 +28,7 @@ public class Ship extends GameObject
 	private int lifeEnergy;
 	private int shipType ;
 	
-	public Ship()
-	{
-		 
-		
-		
-	}
+	
 	public Ship(int shipType, int x, int y,  Rectangle bounds)
 	{
 		this.setShipType(shipType);

@@ -36,10 +36,10 @@ public class PowerUp extends GameObject
 		
 	}
 	
-	
 	public void setPowerUpType(int powerUpType) {
 		try{
-			image = ImageIO.read(new File("powerUp"+powerUpType+ ".png")) ;
+			image = ImageIO.read(new File("powerUp"+powerUpType+ ".png")) ; 
+		}
 		catch(Exception e){
 			
 		}
