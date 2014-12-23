@@ -1,6 +1,6 @@
 import java.util.Vector;
 import view.*;
-
+import model.*;
 
 public class GameEngine {
 	private GameMap gameMap;
@@ -37,7 +37,7 @@ public class GameEngine {
 		leftPressed = false;
 		rightPressed = false;
 		spacePressed = false;
-		powerUp = 0;
+		setPowerUp(0);
 		physicsEngine = new PhysicsEngine( gameMap);
 	}
 	
@@ -160,6 +160,14 @@ public class GameEngine {
 	public void updateHighScores(String name, int score)
 	{
 		gameData.updateHighScores(name, score);
+	}
+
+	public int getPowerUp() {
+		return powerUp;
+	}
+
+	public void setPowerUp(int powerUp) {
+		this.powerUp = powerUp;
 	}
 		
 }

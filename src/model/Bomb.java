@@ -18,8 +18,11 @@ public class Bomb extends GameObject {
 	
 	private int destroyPower;
 	private int kind ;
+	private int r ;
 	
 	private  BufferedImage image ;
+	
+	Rectangle bounds;
 	
 	
 	//Constructor

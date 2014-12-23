@@ -23,9 +23,6 @@ public class GameData
 		setting = new Settings();
 		topList = new int[3];
 		
-		
-		
-		
 	}
 	
 	
@@ -70,6 +67,7 @@ public class GameData
 	public void writeScoreToFile(int score)
 	{
 		String str =score+"";
+		str=str+"/n";
 		writeToFileExample(str);
 	}
 	

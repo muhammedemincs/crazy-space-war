@@ -3,6 +3,7 @@
  * @author omerhanci
  */
 package view;
+import model.*;
 
 import java.awt.Dimension;
 
@@ -26,7 +27,7 @@ import javax.swing.JPanel;
 public class GamePanel extends javax.swing.JPanel{
 	private GameMap map;
     private GameEngine gameEngine;
-    private SpaceShip ship;
+    private Ship ship;
     private ArrayList<Fire> fires;
     private HighScorePanel highScorePanel;
     private ArrayList<Enemy> enemies;

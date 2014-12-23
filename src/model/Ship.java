@@ -91,7 +91,7 @@ public class Ship extends GameObject
 	
 	public boolean doesCollideEnemy(Enemy e)
 	{
-		if(Math.pow(xPos- e.getX(),2)+Math.pow(yPos- e.getY() ,2) > 4*Math.pow(r, 2) )
+		if(Math.pow(xPos- e.getXpos(),2)+Math.pow(yPos- e.getYpos() ,2) > 4*Math.pow(r, 2) )
 			return false;
 		else
 			return true;
