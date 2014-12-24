@@ -1,6 +1,7 @@
 /**
  *
  * @author omerhanci
+
  */
 package view;
 import model.*;
@@ -23,7 +24,7 @@ import javax.swing.*;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
-
+// omerhanci
 
 public class GamePanel extends javax.swing.JPanel{
 	private GameMap map;
