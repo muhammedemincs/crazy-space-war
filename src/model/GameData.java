@@ -57,17 +57,20 @@ public class GameData
 	
 	public boolean isInTopList()
 	{
+		
+		
+		
 		return true;
 	}
 	
-	public void writeScoreToFile(int score)
+	private void writeScoreToFile(int score)
 	{
 		String str =score+"";
 		str=str+"/n";
 		writeToFileExample(str);
 	}
 	
-	
+	private void 
 	
 	
 

@@ -28,6 +28,8 @@ public class Ship extends GameObject
 	private int lifeEnergy;
 	private int shipType ;
 	
+	private int destroyForce;
+	
 	public Ship()
 	{
 		
@@ -44,6 +46,7 @@ public class Ship extends GameObject
 		this.yPos=y;
 		this.bounds = bounds;
 		this.setLifeEnergy(3) ;
+		
 	}
 	
 	//Methods
@@ -109,6 +112,18 @@ public class Ship extends GameObject
 	public boolean doesContain(Point p)
 	{
 		return Math.pow(xPos-p.x, 2)+Math.pow(yPos- p.y, 2) < Math.pow(r, 2) ;
+	}
+
+
+
+	public int getDestroyForce() {
+		return destroyForce;
+	}
+
+
+
+	public void setDestroyForce(int destroyForce) {
+		this.destroyForce = destroyForce;
 	}
 	
 	
