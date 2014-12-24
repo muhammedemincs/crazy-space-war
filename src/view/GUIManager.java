@@ -40,4 +40,9 @@ public class GUIManager {
 		gamePanel.init();
 //		gameEngine.gameStart();
 	}
+	
+	public void endGame()
+	{
+		
+	}
 }

@@ -25,9 +25,6 @@ public class GameData
 		
 	}
 	
-	
-	
-	
 	public void  writeToFileExample(String str) {
 		
 			try {
@@ -55,13 +52,12 @@ public class GameData
 	
 	public int getHighScores()
 	{
-		
+		return 0;
 	}
 	
 	public boolean isInTopList()
 	{
-		
-		
+		return true;
 	}
 	
 	public void writeScoreToFile(int score)

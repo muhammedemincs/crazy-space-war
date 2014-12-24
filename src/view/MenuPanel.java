@@ -3,6 +3,7 @@
  * @author omerhanci
  */
 package view;
+import controller.*;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JFrame;

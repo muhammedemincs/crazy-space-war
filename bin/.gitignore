@@ -14,3 +14,6 @@
 /.settings/
 /Level1Creator.class
 /score.txt
+/Level2Creator.class
+/LevelCreatorFactory.class
+/controller/

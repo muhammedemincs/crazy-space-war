@@ -28,6 +28,13 @@ public class Ship extends GameObject
 	private int lifeEnergy;
 	private int shipType ;
 	
+	public Ship()
+	{
+		
+		
+	}
+	
+	
 	
 	public Ship(int shipType, int x, int y,  Rectangle bounds)
 	{
@@ -81,6 +88,8 @@ public class Ship extends GameObject
 		catch(Exception e){
 			
 		}
+		
+		this.setShipType(shipType) ;
 	}
 	public int getLifeEnergy() {
 		return lifeEnergy;

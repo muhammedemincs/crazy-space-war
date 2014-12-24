@@ -19,6 +19,10 @@ import javax.swing.GroupLayout.Alignment;
 * @author omerhanci
 */
 public class SettingsPanel extends javax.swing.JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private MenuPanel menuPanel;
 	private GUIManager guiManager;
 	private JFrame f; 
