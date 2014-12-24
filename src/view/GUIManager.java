@@ -20,12 +20,11 @@ public class GUIManager {
 	private GameEngine gameEngine;
 	private Graphics2D g2d;
 	
-	public GUIManager(JFrame f, GameEngine gameEngine){
+	public GUIManager(JFrame f){
 		frame = f;
 		menuPanel = new MenuPanel(this);
 		currentPanel = menuPanel;
 		setPanel(menuPanel);
-		this.gameEngine = gameEngine;
 	}
 	public void setPanel(JPanel panel){
 		frame.setVisible(false);
@@ -45,12 +44,11 @@ public class GUIManager {
 //		gameEngine.gameStart();
 	}
 	
-	public void endGame()
+	public void endGame(int score, boolean isInTop)
 	{
-		int score = gameEngine.getScore();
 		//display score on screen
 		//then
-		if( gameEngine.isInTop(score))
+		if(isInTop)
 		{
 			//ask for name do sth 
 			String name;	// get name

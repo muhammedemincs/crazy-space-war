@@ -22,7 +22,7 @@ public class SpaceWar {
 		GameEngine gameEngine;
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		new GUIManager(frame,gameEngine);
+		new GUIManager(frame);
 	}
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
