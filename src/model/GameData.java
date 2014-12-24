@@ -31,7 +31,7 @@ public class GameData
 	 
 				String content = str ;
 	 
-				File file = new File("/users/mkyong/filename.txt");
+				File file = new File("/Users/muhammedemincs/git/crazy-space-war/score.txt");
 	 
 				// if file doesnt exists, then create it
 				if (!file.exists()) {
@@ -63,14 +63,18 @@ public class GameData
 		return true;
 	}
 	
-	private void writeScoreToFile(int score)
+	private void writeScoreToFile(String name, int score)
 	{
+		String myname = name+" ";
 		String str =score+"";
-		str=str+"/n";
-		writeToFileExample(str);
+		String laststr=myname+str+"/n";
+		writeToFileExample(laststr);
 	}
 	
-	private void 
+	private void readScoreToFile()
+	{
+		
+	}
 	
 	
 
