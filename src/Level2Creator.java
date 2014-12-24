@@ -1,24 +1,21 @@
-//Author: Erdinc
 import java.awt.Rectangle;
-//Description: creates all types of enemies, bind powerUps accordingly
 import java.util.ArrayList;
-import model.*;
 
-public class Level1Creator extends LevelCreatorFactory {
+import model.*;
+public class Level2Creator extends LevelCreatorFactory{
 	
 	//constructor
-	public Level1Creator() {
+	public Level2Creator() {
 		numberOfEnemies = 15;
 		typeOfEnemies = new int[3];
-		typeOfEnemies[0] = 15;
-		typeOfEnemies[1] = 0;
+		typeOfEnemies[0] = 10;
+		typeOfEnemies[1] = 5;
 		typeOfEnemies[2] = 0;
 		numberOfPowerUps = (int) ((Math.random() * 2) + 1);
 		enemy = createEnemies();
-		createPowerUp();
+		createPowerUp();		
 	}
 	
-	//methods
 	public ArrayList<Enemy> createEnemies() {
 		ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 		//enemy type 0
@@ -33,7 +30,7 @@ public class Level1Creator extends LevelCreatorFactory {
 		for ( int j = 0; j < typeOfEnemies[2]; j++) {
 			enemies.add( new Enemy(2,j,0,new Rectangle() ));
 		}
-		return enemies;
+		return enemies;	
 	}
 	
 	public ArrayList<PowerUp> createPowerUp() {
@@ -61,8 +58,8 @@ public class Level1Creator extends LevelCreatorFactory {
 				else if ( type == 2) //destructive power
 					newPowerUp = new PowerUp(2,20, enemy.get(enemyBound).getXpos(), enemy.get(enemyBound).getYpos());
 				enemy.get( enemyBound).addPowerUp( newPowerUp);
-				powerup.add( newPowerUp);
 				enemiesBound[i] = enemyBound;
+				powerup.add( newPowerUp);
 			}
 			else
 				i--;
