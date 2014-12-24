@@ -43,24 +43,24 @@ public class GameEngine {
 	}
 	
 	//Getter
-	int getScore()
+	public int getScore()
 	{
 		return score;
 	}
 	
 	//Setter
-	void setLeftPressed(boolean b){
+	public void setLeftPressed(boolean b){
 		leftPressed = b;
 	}
-	void setRightPressed(boolean b){
+	public void setRightPressed(boolean b){
 		rightPressed = b;
 	}
-	void setSpacePressed(boolean b){
+	public void setSpacePressed(boolean b){
 		spacePressed = b;
 	}
 	
 	//Methods
-	void gameStart()
+	public void gameStart()
 	{
 		gameMap.setMap(level,difficulty);
 		if( thread == null)
@@ -103,7 +103,7 @@ public class GameEngine {
 							//calls isInTop() & ask for name etc.
 	}
 	 
-	void updateGame()
+	public void updateGame()
 	{
 		physicsEngine.moveEnemies();
 		if ( leftPressed) physicsEngine.moveShip(0);
@@ -121,9 +121,9 @@ public class GameEngine {
 		if( isGameOver()) running = false;
 	}
 
-	public boolean setShipModel(int model)
+	public void setShipModel(int model)
 	{
-		return gameMap.setShipModel(model);
+		gameMap.setShipModel(model);
 	}
 	
 	public int getEnemyCount()
@@ -147,7 +147,7 @@ public class GameEngine {
 		return false;
 	}
 	
-	public Vector getHighScores()
+	public ArrayList<String> getHighScores()
 	{
 		return gameData.getHighScores();
 	}

@@ -68,7 +68,7 @@ public class GamePanel extends javax.swing.JPanel{
 	
 	public void draw(Graphics2D g2d)
 	{
-		map = new GameMap(WIDTH,HEIGHT);
+		map = new GameMap();
 		g2d.setColor(Color.BLUE);
         g2d.fillRect(0, 0, 1000, 600);
         g2d.setColor(Color.BLACK);
@@ -93,25 +93,7 @@ public class GamePanel extends javax.swing.JPanel{
 		g2.dispose();
 		repaint();
 	}
-	
-	//ATTENTION!!
-	//bu method GUIManager ýn methodu GUIManager ýn constructorý bi GameEngine alcak
-	//bahsi geçen gameEngine o gameEngine
-	public void endGame()
-	{
-		//oyunu bitircek
-		int score = gameEngine.getScore();
-		//display score on screen
-		//then
-		if( gameEngine.isIntop(score))
-		{
-			//ask for name do sth 
-			String name;	// get name
-			gameEngine.updateHighScore(name, score);
-			//burdan sonra listeyi gosterebiliriz
-			highScorePanel.editHighScore(name,score,place);
-		}
-	}
+
 	public void keyController(){
 		bind(KeyEvent.VK_RIGHT, new AbstractAction(){
 			@Override
@@ -133,7 +115,7 @@ public class GamePanel extends javax.swing.JPanel{
         }, "left pressed", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                gameEngine.leftPressed = false;
+                gameEngine.setLeftPressed(false);
             }
         }, "left released");
        
