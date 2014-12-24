@@ -45,6 +45,9 @@ public abstract class GameObject {
 	{
 		yPos = y ;
 	}
+	public Image getCurrentImage(){
+		return Image;
+	}
 	
 	
 }

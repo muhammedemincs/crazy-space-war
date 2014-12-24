@@ -8,15 +8,13 @@ import model.*;
 import controller.*;
 
 import java.awt.Dimension;
-
-
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -24,7 +22,7 @@ import javax.swing.*;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
-// omerhanci
+
 
 public class GamePanel extends javax.swing.JPanel{
 	private GameMap map;
@@ -72,17 +70,16 @@ public class GamePanel extends javax.swing.JPanel{
 		g2d.setColor(Color.BLUE);
         g2d.fillRect(0, 0, 1000, 600);
         g2d.setColor(Color.BLACK);
-        map.draw(g2d);
         g2d.setColor(Color.WHITE);
-        map.fill(g2d);
-        g2d.drawImage(ship.getCurrentImage(), ship.getX(), ship.getY(), null);
+        
+        g2d.drawImage(ship.getCurrentImage(), ship.getXpos(), ship.getYpos(), null);
         for(int i = 0; i < enemies.size(); i++){
-        	g2d.drawImage(enemies.get(i).getCurrentImage(), enemies.get(i).getX(), enemies.get(i).getY(), null);
+        	g2d.drawImage(enemies.get(i).getCurrentImage(), enemies.get(i).getXpos(), enemies.get(i).getYpos(), null);
         }
         for(int i = 0; i < fires.size(); i++){
-        	g2d.drawImage(fires.get(i).getCurrentImage(), fires.get(i).getX(), fires.get(i).getY(), null);
+        	g2d.drawImage(fires.get(i).getCurrentImage(), fires.get(i).getXpos(), fires.get(i).getYpos(), null);
         }
-        g2d.drawImage(fire.getCurrentImage(), fire.getX(), fire.getY(), null);
+
 		repaint();	
 	}
 	
