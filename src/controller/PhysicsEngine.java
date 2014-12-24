@@ -1,7 +1,6 @@
 package controller;
 //Author: Erdinç
 //Computations regarding GameMap
-package controller;
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -12,11 +11,11 @@ public class PhysicsEngine {
 	//Attributes
 	private enum EnemyDirection {left, right, up, down};
 	private EnemyDirection enemyDirection;
-	//
+	
 	private int LEFT_MOST_PIXEL = 30;
 	private int RIGHT_MOST_PIXEL = 30;
 	private int BOTTOM_MOST_PIXEL = 30;
-	//
+
 	private int enemyClusterX;
 	private int ENEMY_MOVEMENT_COUNT;
 	private GameMap gameMap;
@@ -37,9 +36,17 @@ public class PhysicsEngine {
 	public boolean checkCollision() {		
 		for( int i = 0; i < gameMap.bombs.size(); i++) {
 			//check coordinate
-			if ( gameMap.getShip().getXpos() == gameMap.bombs.get(i).getXpos() && 
-					gameMap.getShip().getYpos() == gameMap.bombs.get(i).getYpos() )
-				return true;
+//			if ( gameMap.getShip().getXpos() == gameMap.bombs.get(i).getXpos() && 
+//				gameMap.getShip().getYpos() == gameMap.bombs.get(i).getYpos() )
+			if ( gameMap.getShip().doesContain( new Point( gameMap.bombs.get(i).getXpos(),gameMap.bombs.get(i).getYpos() ) ) ) 	
+			return true;
+		}
+		for( int i = 0; i < gameMap.enemies.size(); i++) {
+			//check coordinate
+//			if ( gameMap.getShip().getXpos() == gameMap.bombs.get(i).getXpos() && 
+//				gameMap.getShip().getYpos() == gameMap.bombs.get(i).getYpos() )
+			if ( gameMap.getShip().doesContain( new Point( gameMap.enemies.get(i).getXpos(),gameMap.enemies.get(i).getYpos() ) ) ) 	
+			return true;
 		}
 		return false;
 	}
@@ -75,7 +82,7 @@ public class PhysicsEngine {
 					gameMap.enemies.get(j).setLifeEnergy(gameMap.enemies.get(j).getLifeEnergy() - gameMap.fires.get(i).getDestroyForce());
 					gameMap.fires.remove(i);
 					if ( gameMap.enemies.get(j).getLifeEnergy() <= 0) {
-						gameMap.enemies.get(j).dropPowerUp();
+//						gameMap.enemies.get(j).dropPowerUp();
 						gameMap.enemies.remove(j);
 						enemyDestroyedNumber++;
 					}
@@ -115,29 +122,35 @@ public class PhysicsEngine {
 			//cannot go left, move down and turn right
 			if ( enemyClusterX == LEFT_MOST_PIXEL && enemyDirection == EnemyDirection.left) {
 				for ( int i = 0; i < gameMap.enemies.size(); i++)
-					gameMap.enemies.get(i).setYpos( gameMap.enemies.get(i).getYpos() -1);
+//					gameMap.enemies.get(i).setYpos( gameMap.enemies.get(i).getYpos() -1);
+					gameMap.enemies.get(i).moveY();
 				enemyDirection = EnemyDirection.right;
 			}
 			//cannot go right, move down and turn left
 			else if ( enemyClusterX == RIGHT_MOST_PIXEL && enemyDirection == EnemyDirection.right) {
 				for ( int i = 0; i < gameMap.enemies.size(); i++)
-					gameMap.enemies.get(i).setYpos( gameMap.enemies.get(i).getYpos() - 1);
+//					gameMap.enemies.get(i).setYpos( gameMap.enemies.get(i).getYpos() - 1);
+					gameMap.enemies.get(i).moveY();
 				enemyDirection = EnemyDirection.left;
 			}
 			else if ( enemyDirection == EnemyDirection.right) {
 				for ( int i = 0; i < gameMap.enemies.size(); i++)
-					gameMap.enemies.get(i).setXpos( gameMap.enemies.get(i).getXpos() + 1);	
+//					gameMap.enemies.get(i).setXpos( gameMap.enemies.get(i).getXpos() + 1);	
+					gameMap.enemies.get(i).moveLeft();
 			}
 			else if ( enemyDirection == EnemyDirection.left) {
 				for ( int i = 0; i < gameMap.enemies.size(); i++)
-					gameMap.enemies.get(i).setXpos( gameMap.enemies.get(i).getXpos() - 1);	
+//					gameMap.enemies.get(i).setXpos( gameMap.enemies.get(i).getXpos() - 1);	
+					gameMap.enemies.get(i).moveLeft();
 			}
 		}
 		//move fire and bomb objects
 		for ( int i = 0; i < gameMap.bombs.size(); i++)
-			gameMap.bombs.get(i).setYpos( gameMap.bombs.get(i).getYpos() - 1);
+//			gameMap.bombs.get(i).setYpos( gameMap.bombs.get(i).getYpos() - 1);
+			gameMap.bombs.get(i).moveY();
 		for ( int i = 0; i < gameMap.fires.size(); i++)
-			gameMap.fires.get(i).setYpos( gameMap.fires.get(i).getYpos() + 1);
+//			gameMap.fires.get(i).setYpos( gameMap.fires.get(i).getYpos() + 1);
+			gameMap.fires.get(i).moveY();
 	}
 	
 	//fire on input

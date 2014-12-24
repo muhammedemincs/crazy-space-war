@@ -54,9 +54,9 @@ public class Level2Creator extends LevelCreatorFactory{
 					newPowerUp = new PowerUp(0,0, enemy.get(enemyBound).getXpos(), enemy.get(enemyBound).getYpos());
 				else if ( type == 1) //speed up
 					newPowerUp = new PowerUp(1,20, enemy.get(enemyBound).getXpos(), enemy.get(enemyBound).getYpos());
-				else if ( type == 2) //destructive power
+				else //destructive power
 					newPowerUp = new PowerUp(2,20, enemy.get(enemyBound).getXpos(), enemy.get(enemyBound).getYpos());
-				enemy.get( enemyBound).addPowerUp( newPowerUp);
+//				enemy.get( enemyBound).addPowerUp( newPowerUp);
 				enemiesBound[i] = enemyBound;
 				powerup.add( newPowerUp);
 			}

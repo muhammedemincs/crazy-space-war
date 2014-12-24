@@ -1,23 +1,24 @@
-package controller;
-//Author: Erdinc
-import java.awt.Rectangle;
-//Description: creates all types of enemies, bind powerUps accordingly
-import java.util.ArrayList;
-import model.*;
+//import java.util.ArrayList;
+package src;
 
-public class Level1Creator extends LevelCreatorFactory {
+import java.awt.Rectangle;
+import java.util.ArrayList;
+
+import model.Enemy;
+import model.PowerUp;
+
+public class Level3Creator extends LevelCreatorFactory {
 	
 	//constructor
-	public Level1Creator() {
+	public Level3Creator() {
 		numberOfEnemies = 15;
 		typeOfEnemies = new int[3];
-		typeOfEnemies[0] = 15;
-		typeOfEnemies[1] = 0;
-		typeOfEnemies[2] = 0;
+		typeOfEnemies[0] = 5;
+		typeOfEnemies[1] = 5;
+		typeOfEnemies[2] = 5;
 		numberOfPowerUps = (int) ((Math.random() * 2) + 1);
 	}
 	
-	//methods
 	public ArrayList<Enemy> createEnemies() {
 		ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 		//enemy type 0
@@ -32,7 +33,7 @@ public class Level1Creator extends LevelCreatorFactory {
 		for ( int j = 0; j < typeOfEnemies[2]; j++) {
 			enemies.add( new Enemy(2,j,0,new Rectangle() ));
 		}
-		return enemies;
+		return enemies;	
 	}
 	
 	public ArrayList<PowerUp> createPowerUp() {
@@ -57,11 +58,11 @@ public class Level1Creator extends LevelCreatorFactory {
 					newPowerUp = new PowerUp(0,0, enemy.get(enemyBound).getXpos(), enemy.get(enemyBound).getYpos());
 				else if ( type == 1) //speed up
 					newPowerUp = new PowerUp(1,20, enemy.get(enemyBound).getXpos(), enemy.get(enemyBound).getYpos());
-				else //destructive power
+				else if ( type == 2) //destructive power
 					newPowerUp = new PowerUp(2,20, enemy.get(enemyBound).getXpos(), enemy.get(enemyBound).getYpos());
-//				enemy.get( enemyBound).addPowerUp( newPowerUp);
-				powerup.add( newPowerUp);
+				enemy.get( enemyBound).addPowerUp( newPowerUp);
 				enemiesBound[i] = enemyBound;
+				powerup.add( newPowerUp);
 			}
 			else
 				i--;
