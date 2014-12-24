@@ -21,8 +21,8 @@ public class SpaceWar {
 		JFrame frame = new JFrame("SpaceWar");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		GUIManager guiManager = new GUIManager(frame);
 		GameMap gameMap = new GameMap(); 
+		GUIManager guiManager = new GUIManager(frame,gameMap);
 		GameData gameData = new GameData();
 		GameEngine gameEngine = new GameEngine(guiManager, gameMap,gameData, 1,1);
 		guiManager.setEngine(gameEngine);

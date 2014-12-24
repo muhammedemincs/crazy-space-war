@@ -80,7 +80,6 @@ public class GameEngine {
 	//game loop
 	public void run()
 	{
-		System.out.println("runn");
 		long start;
 		long elapsed;
 		long wait;

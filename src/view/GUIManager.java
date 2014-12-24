@@ -6,6 +6,7 @@ package view;
 import javax.swing.JFrame;
 
 import controller.*;
+import model.*;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -20,12 +21,14 @@ public class GUIManager {
 	private MenuPanel menuPanel;
 	private GamePanel gamePanel;
 	private GameEngine gameEngine;
+	private GameMap gameMap;
 	private Graphics2D g2d;
 	
-	public GUIManager(JFrame f){
+	public GUIManager(JFrame f, GameMap gameMap){
 		frame = f;
+		this.gameMap = gameMap;
 		menuPanel = new MenuPanel(this);
-		gamePanel = new GamePanel();
+		gamePanel = new GamePanel(gameMap);
 		currentPanel = menuPanel;
 		setPanel(menuPanel);
 	}
@@ -42,6 +45,7 @@ public class GUIManager {
 	}*/
 	
 	public void startGame(){
+		setPanel(gamePanel);
 		gamePanel.init();
 		gameEngine.gameStart();
 	}

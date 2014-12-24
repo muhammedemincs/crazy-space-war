@@ -26,12 +26,9 @@ import javax.swing.JPanel;
 
 
 public class GamePanel extends javax.swing.JPanel{
-	private GameMap map;
+	private GameMap gameMap;
     private GameEngine gameEngine;
-    private Ship ship;
-    private ArrayList<Fire> fires;
     private HighScorePanel highScorePanel;
-    private ArrayList<Enemy> enemies;
     private JPanel panel;
 
     public static final int WHEN = JComponent.WHEN_IN_FOCUSED_WINDOW;
@@ -46,12 +43,13 @@ public class GamePanel extends javax.swing.JPanel{
 	private Graphics2D g;
 	private BufferedImage image;
 	
-	public GamePanel()
+	public GamePanel(GameMap gameMap)
 	{
 		super(true);
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		setFocusable(true);
 		requestFocus();
+		this.gameMap = gameMap;
 	}
 	
 	public void init()
@@ -69,17 +67,18 @@ public class GamePanel extends javax.swing.JPanel{
 	
 	public void draw(Graphics2D g2d)
 	{
-		g2d.setColor(Color.BLUE);
+		g2d.setColor(Color.BLACK);
         g2d.fillRect(0, 0, 1000, 600);
-        System.out.println("DRAW2");
-        g2d.drawImage(ship.getCurrentImage(), ship.getXpos(), ship.getYpos(), null);
+        g2d.drawImage(gameMap.getShip().getCurrentImage(), gameMap.getShip().getXpos(), gameMap.getShip().getYpos(), null);
+        ArrayList<Enemy> enemies = gameMap.enemies; 
         for(int i = 0; i < enemies.size(); i++){
         	g2d.drawImage(enemies.get(i).getCurrentImage(), enemies.get(i).getXpos(), enemies.get(i).getYpos(), null);
         }
+        ArrayList<Fire> fires = gameMap.fires;
         for(int i = 0; i < fires.size(); i++){
         	g2d.drawImage(fires.get(i).getCurrentImage(), fires.get(i).getXpos(), fires.get(i).getYpos(), null);
         }
-		repaint();	
+        repaint();	
 	}
 	
 	public void drawToScreen()

@@ -23,7 +23,7 @@ public class Ship extends GameObject
 	final int r=10;
 	
 	//private int x , y ;
-	Rectangle bounds;
+	//Rectangle bounds;
 	
 	private int lifeEnergy;
 	private int shipType ;
@@ -31,20 +31,16 @@ public class Ship extends GameObject
 	private int destroyForce;
 	
 	public Ship()
-	{
-		
-		
+	{	
 	}
 	
-	
-	
-	public Ship(int shipType, int x, int y,  Rectangle bounds)
+	public Ship(int shipType, int x, int y)
 	{
-		this.setShipType(shipType);
+	//	this.setShipType(shipType);
 		this.setShipTypeImg(shipType);
 		this.xPos=x;
 		this.yPos=y;
-		this.bounds = bounds;
+		//this.bounds = bounds;
 		this.setLifeEnergy(3) ;
 		
 	}
@@ -54,8 +50,8 @@ public class Ship extends GameObject
 	public boolean moveRight()
 	{
 		xPos+=cell ;
-		if(!bounds.contains(xPos,yPos))
-			return false;
+		//if(!bounds.contains(xPos,yPos))
+		//	return false;
 		return true;
 	}
 	
@@ -63,8 +59,8 @@ public class Ship extends GameObject
 	public boolean moveLeft()
 	{
 		xPos-=cell ;
-		if(!bounds.contains(xPos,yPos))
-			return false;
+		//if(!bounds.contains(xPos,yPos))
+			//return false;
 		return true;
 	}
 	
@@ -86,7 +82,10 @@ public class Ship extends GameObject
 	public void setShipTypeImg(int shipType)
 	{
 		try{
-			image = ImageIO.read(new File("ship"+shipType+".png"));
+			String png = "ship"+ shipType +".png";
+			System.out.println(png);
+			image = ImageIO.read(new File(png));
+			System.out.println("as");
 		}
 		catch(Exception e){
 			

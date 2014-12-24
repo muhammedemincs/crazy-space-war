@@ -22,37 +22,20 @@ public class GameMap {
 	public ArrayList<Fire> fires;
 	public ArrayList<Enemy> enemies; 
 	private LevelCreatorFactory factory ;
-	
-	private int weight ;
-	private int height ;
+
 	
 	public GameMap()
 	{
-		ship = new Ship() ;	
+		ship = new Ship(1,100, 100) ;	
+		System.out.println("aaaaaaaaaaaaaaaaaa");
 		bombs = new ArrayList<Bomb>() ;
 		//powerUps = new ArrayList<PowerUp>() ;
 		fires = new ArrayList<Fire>() ;
 		//enemies = new ArrayList<Enemy>() ;
-		setWeight(0);
-		setHeight(0);
 	}
 	
-	public GameMap(int weight, int height)
-	{
-		this.weight = weight ;
-		this.height = height ;
-		
-		ship = new Ship() ;	
-		bombs = new ArrayList<Bomb>() ;
-		
-		fires = new ArrayList<Fire>() ;
-		
-	}
 	
 	//Methods
-	
-	
-	//public void draw(Graphi)
 	
 	public void setMap(int lev, int dif)
 	{
@@ -69,7 +52,6 @@ public class GameMap {
 		}
 		enemies = factory.createEnemies();
 		//powerUps = factory.createPowerUp();
-		System.out.println("vofrýh");
 	}
 
 	
@@ -98,23 +80,5 @@ public class GameMap {
 		this.ship.setShipTypeImg(model);
 	
 	}
-
-	public int getWeight() {
-		return weight;
-	}
-
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-	
-	
 	
 }
