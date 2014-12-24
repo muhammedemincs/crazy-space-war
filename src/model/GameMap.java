@@ -3,6 +3,14 @@ import controller.*;
 
 import java.util.ArrayList;
 
+import javax.swing.*;
+import java.awt.Graphics2D;
+
+import javax.swing.JPanel;
+
+
+
+
 public class GameMap {
 	
 	//Properties
@@ -14,6 +22,8 @@ public class GameMap {
 	public ArrayList<Enemy> enemies; 
 	private LevelCreatorFactory abc ;
 	
+	private int weight ;
+	private int height ;
 	
 	public GameMap()
 	{
@@ -22,10 +32,26 @@ public class GameMap {
 		//powerUps = new ArrayList<PowerUp>() ;
 		fires = new ArrayList<Fire>() ;
 		//enemies = new ArrayList<Enemy>() ;
+		setWeight(0);
+		setHeight(0);
+	}
+	
+	public GameMap(int weight, int height)
+	{
+		this.weight = weight ;
+		this.height = height ;
+		
+		ship = new Ship() ;	
+		bombs = new ArrayList<Bomb>() ;
+		
+		fires = new ArrayList<Fire>() ;
 		
 	}
 	
 	//Methods
+	
+	
+	//public void draw(Graphi)
 	
 	public void setMap(int lev, int dif)
 	{
@@ -70,6 +96,22 @@ public class GameMap {
 	{
 		this.ship.setShipTypeImg(model);
 	
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
 	
 	

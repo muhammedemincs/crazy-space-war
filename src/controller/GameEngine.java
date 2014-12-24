@@ -21,6 +21,8 @@ public class GameEngine {
 	private boolean rightPressed;
 	private boolean spacePressed;
 	
+	private boolean isInTop;
+	
 	//main loop
 	private Thread thread;
 	private boolean running;
@@ -101,7 +103,7 @@ public class GameEngine {
 			
 		}
 		
-		guiManager.endGame(); //end game and show score 
+		guiManager.endGame(score,isInTop); //end game and show score 
 							//calls isInTop() & ask for name etc.
 	}
 	 

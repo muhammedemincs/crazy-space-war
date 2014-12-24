@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Point ;
 import java.awt.Rectangle;
 import java.awt.Event;
+import java.awt.image.BufferedImage;
 
 
 
@@ -17,13 +18,15 @@ public abstract class GameObject {
 	public final int cell = 100;
 	protected int xPos;
 	protected int yPos;
-	
+	protected BufferedImage image ;
 	//Methods
 	
 	abstract boolean moveLeft();
 	abstract boolean moveRight();
 	abstract boolean moveY();
 	//Get and Set Methods
+	
+	
 	
 	
 	public int getXpos()
@@ -45,9 +48,11 @@ public abstract class GameObject {
 	{
 		yPos = y ;
 	}
-	public Image getCurrentImage(){
-		return Image;
+	public BufferedImage getCurrentImage(){
+		return image;
 	}
+	
+	
 	
 	
 }
