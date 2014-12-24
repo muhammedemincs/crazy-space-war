@@ -6,17 +6,23 @@
 // oo class alõrõm bi dal
 package view;
 import javax.swing.JFrame;
+
 import java.awt.BorderLayout;
+
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import model.*;
+import controller.*;
+
 public class SpaceWar {
 	public SpaceWar(){
 		JFrame frame = new JFrame("SpaceWar");
+		GameEngine gameEngine;
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		new GUIManager(frame);
+		new GUIManager(frame,gameEngine);
 	}
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
