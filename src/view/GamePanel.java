@@ -11,7 +11,6 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Polygon;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.awt.Graphics;
@@ -53,11 +52,6 @@ public class GamePanel extends javax.swing.JPanel{
 		requestFocus();
 	}
 	
-	//GUIManager da oyunu baþlatýrken önce GamePanel ýn init() ini
-	//sonra da GameEngine in gameStart() ýný çaðýrcaz
-	//Bide GUIManager da draw() ve drawToScreen methodlarý olcak
-	//içlerinde sadece GamePanel ýn ayný isimli methodlarýný çaðýrcaklar
-	
 	public void init()
 	{
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -68,10 +62,7 @@ public class GamePanel extends javax.swing.JPanel{
 	{
 		map = new GameMap();
 		g2d.setColor(Color.BLUE);
-        g2d.fillRect(0, 0, 1000, 600);
-        g2d.setColor(Color.BLACK);
-        g2d.setColor(Color.WHITE);
-        
+        g2d.fillRect(0, 0, 1000, 600);        
         g2d.drawImage(ship.getCurrentImage(), ship.getXpos(), ship.getYpos(), null);
         for(int i = 0; i < enemies.size(); i++){
         	g2d.drawImage(enemies.get(i).getCurrentImage(), enemies.get(i).getXpos(), enemies.get(i).getYpos(), null);
@@ -79,7 +70,6 @@ public class GamePanel extends javax.swing.JPanel{
         for(int i = 0; i < fires.size(); i++){
         	g2d.drawImage(fires.get(i).getCurrentImage(), fires.get(i).getXpos(), fires.get(i).getYpos(), null);
         }
-
 		repaint();	
 	}
 	

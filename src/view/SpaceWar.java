@@ -28,7 +28,6 @@ public class SpaceWar {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                
                 new SpaceWar();//create an instance which includes GUI etc
             }
         });
