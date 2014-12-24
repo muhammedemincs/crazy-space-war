@@ -4,8 +4,10 @@
  */
 package view;
 import javax.swing.JFrame;
+
 import controller.*;
 
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
@@ -23,6 +25,7 @@ public class GUIManager {
 	public GUIManager(JFrame f){
 		frame = f;
 		menuPanel = new MenuPanel(this);
+		gamePanel = new GamePanel();
 		currentPanel = menuPanel;
 		setPanel(menuPanel);
 	}
@@ -33,21 +36,19 @@ public class GUIManager {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	public void draw(){
-		gamePanel.draw(g2d);
-	}
-	public void drawToScreen(){
+	
+	/*public void drawToScreen(){
 		gamePanel.drawToScreen();
-	}
+	}*/
+	
 	public void startGame(){
 		gamePanel.init();
-//		gameEngine.gameStart();
+		gameEngine.gameStart();
 	}
 	
 	public void endGame(int score, boolean isInTop)
 	{
-		//display score on screen
-		//then
+		//display score
 		if(isInTop)
 		{
 			//ask for name do sth 
@@ -55,5 +56,8 @@ public class GUIManager {
 			//gameEngine.updateHighScores(name, score);
 			//highScorePanel.editHighScore(name,score,place);
 		}
+	}
+	public void setEngine(GameEngine gameEngine) {
+		this.gameEngine = gameEngine;
 	}
 }

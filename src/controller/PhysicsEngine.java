@@ -107,8 +107,8 @@ public class PhysicsEngine {
 	//wrapper function for move objects, is called by game engine
 	public void moveEnemies() {
 		moveObjects();
-		checkPowerUp();
-		enemyFire();
+		//checkPowerUp();
+		//enemyFire();
 	}
 	
 	//move enemies, fires, bombs

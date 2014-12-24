@@ -30,7 +30,7 @@ public class GameEngine {
 	private long targetTime = 1000 / FPS;
 	
 	//Constructor
-	GameEngine( GUIManager guiManager, GameMap gameMap, GameData gameData, int level, int diff)
+	public GameEngine( GUIManager guiManager, GameMap gameMap, GameData gameData, int level, int diff)
 	{
 		this.gameMap = gameMap;
 		this.gameData = gameData;
@@ -72,6 +72,7 @@ public class GameEngine {
 			running = true;
 			thread = new Thread();
 			thread.start();
+			run();
 		}
 			
 	}
@@ -79,6 +80,7 @@ public class GameEngine {
 	//game loop
 	public void run()
 	{
+		System.out.println("runn");
 		long start;
 		long elapsed;
 		long wait;
@@ -88,8 +90,8 @@ public class GameEngine {
 			start = System.nanoTime();
 			
 			updateGame();
-			guiManager.draw();
-			guiManager.drawToScreen();
+			//guiManager.draw();
+			//guiManager.drawToScreen();
 			
 			elapsed = System.nanoTime() - start;
 			wait = targetTime - elapsed / 1000000;

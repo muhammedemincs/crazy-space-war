@@ -17,7 +17,9 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+
 import javax.swing.*;
+
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
@@ -58,11 +60,18 @@ public class GamePanel extends javax.swing.JPanel{
 		g = (Graphics2D) image.getGraphics();
 	}
 	
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		Graphics2D g2d = (Graphics2D) g;
+		draw(g2d);
+	}
+	
 	public void draw(Graphics2D g2d)
 	{
-		map = new GameMap();
 		g2d.setColor(Color.BLUE);
-        g2d.fillRect(0, 0, 1000, 600);        
+        g2d.fillRect(0, 0, 1000, 600);
+        System.out.println("DRAW2");
         g2d.drawImage(ship.getCurrentImage(), ship.getXpos(), ship.getYpos(), null);
         for(int i = 0; i < enemies.size(); i++){
         	g2d.drawImage(enemies.get(i).getCurrentImage(), enemies.get(i).getXpos(), enemies.get(i).getYpos(), null);

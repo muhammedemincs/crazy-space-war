@@ -19,10 +19,13 @@ import controller.*;
 public class SpaceWar {
 	public SpaceWar(){
 		JFrame frame = new JFrame("SpaceWar");
-		GameEngine gameEngine;
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		new GUIManager(frame);
+		GUIManager guiManager = new GUIManager(frame);
+		GameMap gameMap = new GameMap(); 
+		GameData gameData = new GameData();
+		GameEngine gameEngine = new GameEngine(guiManager, gameMap,gameData, 1,1);
+		guiManager.setEngine(gameEngine);
 	}
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

@@ -4,6 +4,7 @@ import controller.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
+
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
@@ -20,7 +21,7 @@ public class GameMap {
 	public ArrayList<PowerUp> powerUps; 
 	public ArrayList<Fire> fires;
 	public ArrayList<Enemy> enemies; 
-	private LevelCreatorFactory abc ;
+	private LevelCreatorFactory factory ;
 	
 	private int weight ;
 	private int height ;
@@ -57,18 +58,18 @@ public class GameMap {
 	{
 		if(lev==1)
 		{
-			abc = new Level1Creator();
+			factory = new Level1Creator();
 		
 		}
 			
 		else
 		{
-			abc = new Level2Creator() ;
+			factory = new Level2Creator() ;
 			
 		}
-		
-		enemies = abc.createEnemies();
-		powerUps = abc.createPowerUp();
+		enemies = factory.createEnemies();
+		//powerUps = factory.createPowerUp();
+		System.out.println("vofrýh");
 	}
 
 	
