@@ -1,5 +1,7 @@
 package controller;
+import java.util.ArrayList;
 import java.util.Vector;
+
 import view.*;
 import model.*;
 
@@ -154,7 +156,7 @@ public class GameEngine {
 	
 	public boolean isInTop(int score)
 	{
-		return gameData.isInTop(score);
+		return gameData.isInTopList(score);
 		
 	}
 	
