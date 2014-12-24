@@ -11,9 +11,7 @@ public class Level2Creator extends LevelCreatorFactory{
 		typeOfEnemies[0] = 10;
 		typeOfEnemies[1] = 5;
 		typeOfEnemies[2] = 0;
-		numberOfPowerUps = (int) ((Math.random() * 2) + 1);
-		enemy = createEnemies();
-		createPowerUp();		
+		numberOfPowerUps = (int) ((Math.random() * 3) + 1);	
 	}
 	
 	public ArrayList<Enemy> createEnemies() {
