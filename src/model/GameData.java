@@ -72,6 +72,7 @@ public class GameData
 		
 	}
 
+	//writes new score to list
 	public void updateHighScores(String name, int score) {
 		String str = name + " " + score + "\n";
 		writeToFileExample(str);
