@@ -1,11 +1,8 @@
 //Author: Erdinç
 //Computations regarding GameMap
-package controller;
-import java.awt.Point;
 import java.awt.Rectangle;
 
 import model.*;
-
 public class PhysicsEngine {
 	
 	//Attributes
@@ -47,19 +44,16 @@ public class PhysicsEngine {
 	public boolean checkPowerUp() {
 		for( int i = 0; i < gameMap.powerUps.size(); i++) {
 			//check coordinate
-//			if ( gameMap.getShip().getXpos() == gameMap.powerUps.get(i).getXpos() && 
-//					gameMap.getShip().getYpos() == gameMap.powerUps.get(i).getYpos() )
+			if ( gameMap.getShip().getXpos() == gameMap.powerUps.get(i).getXpos() && 
+					gameMap.getShip().getYpos() == gameMap.powerUps.get(i).getYpos() )
 //				gameMap.getShip().getPowerUp( gameMap.powerUps.get(i));
-			if ( gameMap.getShip().doesContain( new Point(gameMap.powerUps.get(i).getXpos(), gameMap.powerUps.get(i).getYpos() ) ) )
 				if ( gameMap.powerUps.get(i).getPowerUpkind() == 0) //add health
 					gameMap.getShip().setLifeEnergy( gameMap.getShip().getLifeEnergy() + 1);
-				else if ( gameMap.powerUps.get(i).getPowerUpkind() == 1) ; //speed up
+				else if ( gameMap.powerUps.get(i).getPowerUpkind() == 1) //speed up
 //					gameMap.getShip().setSpeed( gameMap.getShip().getSpeed() * 2);
-				else if ( gameMap.powerUps.get(i).getPowerUpkind() == 2) ; //destructive bullets
+				else if ( gameMap.powerUps.get(i).getPowerUpkind() == 2) //destructive bullets
 //					gameMap.getShip().setDestroyForce( gameMap.getShip().getDestroyForce() * 2);
-			return true;
 		}
-		return false;
 	}
 	
 	//check whether enemies collide with fires
@@ -73,11 +67,7 @@ public class PhysicsEngine {
 //					gameMap.enemies.get(i).isHit( gameMap.fires[i]);
 					gameMap.enemies.get(j).setLifeEnergy(gameMap.enemies.get(j).getLifeEnergy() - gameMap.fires.get(i).getDestroyForce());
 					gameMap.fires.remove(i);
-					if ( gameMap.enemies.get(j).getLifeEnergy() <= 0) {
-						gameMap.enemies.get(j).dropPowerUp();
-						gameMap.enemies.remove(j);
-						enemyDestroyedNumber++;
-					}
+					enemyDestroyedNumber++;
 				}
 			}
 		}

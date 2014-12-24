@@ -14,6 +14,8 @@ public class Level1Creator extends LevelCreatorFactory {
 		typeOfEnemies[1] = 0;
 		typeOfEnemies[2] = 0;
 		numberOfPowerUps = (int) ((Math.random() * 2) + 1);
+		enemy = createEnemies();
+		createPowerUp();
 	}
 	
 	//methods
