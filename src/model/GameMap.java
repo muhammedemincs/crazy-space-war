@@ -26,8 +26,7 @@ public class GameMap {
 	
 	public GameMap()
 	{
-		ship = new Ship(1,100, 100) ;	
-		System.out.println("aaaaaaaaaaaaaaaaaa");
+		ship = new Ship(1 , 0, 0);	
 		bombs = new ArrayList<Bomb>() ;
 		//powerUps = new ArrayList<PowerUp>() ;
 		fires = new ArrayList<Fire>() ;

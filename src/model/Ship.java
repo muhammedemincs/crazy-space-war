@@ -8,17 +8,15 @@ import java.awt.Rectangle;
 //import java.awt.Event;
 import java.awt.image.BufferedImage ;
 import java.io.File;
+
 import javax.imageio.ImageIO;
 //import javax.swing.JPanel;
 
 public class Ship extends GameObject 
 {
 	//Properties
-	// Bu classta ship'in 
 	
-	private  BufferedImage image ;
-	//Ben haraket olarak cell tan›mlad›m
-	
+	// Bu classta ship'in
 	//carpısma algoritması için gemi bi circle ve r si var
 	final int r=10;
 	
@@ -27,26 +25,18 @@ public class Ship extends GameObject
 	
 	private int lifeEnergy;
 	private int shipType ;
-	
 	private int destroyForce;
-	
-	public Ship()
-	{	
-	}
 	
 	public Ship(int shipType, int x, int y)
 	{
-	//	this.setShipType(shipType);
 		this.setShipTypeImg(shipType);
 		this.xPos=x;
 		this.yPos=y;
 		//this.bounds = bounds;
-		this.setLifeEnergy(3) ;
-		
+		this.setLifeEnergy(3) ;	
 	}
 	
 	//Methods
-	
 	public boolean moveRight()
 	{
 		xPos+=cell ;
@@ -54,7 +44,6 @@ public class Ship extends GameObject
 		//	return false;
 		return true;
 	}
-	
 	
 	public boolean moveLeft()
 	{
@@ -84,18 +73,20 @@ public class Ship extends GameObject
 		try{
 			String png = "ship"+ shipType +".png";
 			System.out.println(png);
-			image = ImageIO.read(new File(png));
-			System.out.println("as");
+			image = ImageIO.read(new File("C:\\Users\\Balanur\\git\\crazy-space-war\\src\\model\\" + png));
 		}
 		catch(Exception e){
-			
+			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		
 		this.setShipType(shipType) ;
 	}
+	
 	public int getLifeEnergy() {
 		return lifeEnergy;
 	}
+
 	public void setLifeEnergy(int lifeEnergy) {
 		this.lifeEnergy = lifeEnergy;
 	}
@@ -113,18 +104,11 @@ public class Ship extends GameObject
 		return Math.pow(xPos-p.x, 2)+Math.pow(yPos- p.y, 2) < Math.pow(r, 2) ;
 	}
 
-
-
 	public int getDestroyForce() {
 		return destroyForce;
 	}
 
-
-
 	public void setDestroyForce(int destroyForce) {
 		this.destroyForce = destroyForce;
 	}
-	
-	
-	
 }

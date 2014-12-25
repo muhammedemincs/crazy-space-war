@@ -31,7 +31,8 @@ public class MenuPanel extends javax.swing.JPanel {
 	private void initComponents() {
 		
 		JButton btnStartGame = new JButton("Start Game");
-		btnStartGame.addActionListener(new ActionListener() {
+		btnStartGame.addActionListener(new ActionListener()
+		{
 			public void actionPerformed(ActionEvent arg0) {
 				guiManager.startGame();
 			}

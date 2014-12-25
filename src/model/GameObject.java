@@ -15,7 +15,7 @@ public abstract class GameObject {
 	//Properties
 	
 	
-	public final int cell = 100;
+	public final int cell = 10;
 	protected int xPos;
 	protected int yPos;
 	protected BufferedImage image ;
@@ -25,9 +25,6 @@ public abstract class GameObject {
 	abstract boolean moveRight();
 	abstract boolean moveY();
 	//Get and Set Methods
-	
-	
-	
 	
 	public int getXpos()
 	{
@@ -51,8 +48,4 @@ public abstract class GameObject {
 	public BufferedImage getCurrentImage(){
 		return image;
 	}
-	
-	
-	
-	
 }

@@ -68,16 +68,16 @@ public class GamePanel extends javax.swing.JPanel{
 	public void draw(Graphics2D g2d)
 	{
 		g2d.setColor(Color.BLACK);
-        g2d.fillRect(0, 0, 1000, 600);
+        g2d.fillRect(0, 0, 1040, 600);
         g2d.drawImage(gameMap.getShip().getCurrentImage(), gameMap.getShip().getXpos(), gameMap.getShip().getYpos(), null);
         ArrayList<Enemy> enemies = gameMap.enemies; 
-        for(int i = 0; i < enemies.size(); i++){
+        /*for(int i = 0; i < enemies.size(); i++){
         	g2d.drawImage(enemies.get(i).getCurrentImage(), enemies.get(i).getXpos(), enemies.get(i).getYpos(), null);
         }
         ArrayList<Fire> fires = gameMap.fires;
         for(int i = 0; i < fires.size(); i++){
         	g2d.drawImage(fires.get(i).getCurrentImage(), fires.get(i).getXpos(), fires.get(i).getYpos(), null);
-        }
+        }*/
         repaint();	
 	}
 	
