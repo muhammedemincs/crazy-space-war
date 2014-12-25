@@ -73,7 +73,7 @@ public class Ship extends GameObject
 		try{
 			String png = "ship"+ shipType +".png";
 			System.out.println(png);
-			image = ImageIO.read(new File("C:\\Users\\Balanur\\git\\crazy-space-war\\src\\model\\" + png));
+			image = ImageIO.read(new File("/Users/muhammedemincs/git/crazy-space-war/src/ship1.png"));
 		}
 		catch(Exception e){
 			System.out.println(e.getMessage());

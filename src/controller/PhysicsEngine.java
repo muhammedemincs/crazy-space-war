@@ -76,8 +76,8 @@ public class PhysicsEngine {
 		for( int i = 0; i < gameMap.fires.size(); i++) {
 			for( int j = 0; j < gameMap.enemies.size(); j++) {
 				//check coordinate, destroy objects if necessary
-				if ( gameMap.fires.get(j).getXpos() == gameMap.enemies.get(i).getXpos() && 
-						gameMap.fires.get(j).getYpos() == gameMap.enemies.get(i).getYpos() ) {
+				if ( gameMap.fires.get(i).getXpos() == gameMap.enemies.get(j).getXpos() && 
+						gameMap.fires.get(i).getYpos() == gameMap.enemies.get(j).getYpos() ) {
 //					gameMap.enemies.get(i).isHit( gameMap.fires[i]);
 					gameMap.enemies.get(j).setLifeEnergy(gameMap.enemies.get(j).getLifeEnergy() - gameMap.fires.get(i).getDestroyForce());
 					gameMap.fires.remove(i);
@@ -94,6 +94,7 @@ public class PhysicsEngine {
 	
 	//move ship according to input from GameEngine
 	public void moveShip( int input) {
+		System.out.println("move haci "+input) ;
 		if ( input == 0) //left
 			gameMap.getShip().setXpos( gameMap.getShip().getXpos() - 1);
 		if ( input == 1) //right
@@ -156,10 +157,8 @@ public class PhysicsEngine {
 	//fire on input
 	public void fire() {
 		//create and set properties
-		Fire fireObject = new Fire();
-		fireObject.setYpos( gameMap.getShip().getYpos());
-		fireObject.setXpos( gameMap.getShip().getXpos());
-//		fireObject.setPower( gameMap.getShip().getPower());
+		Fire fireObject = new Fire(0, gameMap.getShip().getXpos(), gameMap.getShip().getYpos(), new Rectangle());
+		//fireObject.setPower( gameMap.getShip().getPower());
 		//add to fire list
 		gameMap.fires.add( fireObject);
 	}

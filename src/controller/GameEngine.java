@@ -5,7 +5,7 @@ import java.util.Vector;
 import view.*;
 import model.*;
 
-public class GameEngine {
+public class GameEngine extends Thread{
 	private GameMap gameMap;
 	private GameData gameData;
 	private GUIManager guiManager;
@@ -24,7 +24,6 @@ public class GameEngine {
 	private boolean isInTop;
 	
 	//main loop
-	private Thread thread;
 	private boolean running;
 	private int FPS = 60;
 	private long targetTime = 1000 / FPS;
@@ -55,6 +54,7 @@ public class GameEngine {
 	//Setter
 	public void setLeftPressed(boolean b){
 		leftPressed = b;
+		System.out.println("I set left pressed to " + b);
 	}
 	public void setRightPressed(boolean b){
 		rightPressed = b;
@@ -67,16 +67,11 @@ public class GameEngine {
 	public void gameStart()
 	{
 		gameMap.setMap(level,difficulty);
-		if( thread == null)
-		{
-			running = true;
-			thread = new Thread();
-			thread.start();
-			run();
-		}
+		
+		running = true;
+		this.start();
 			
 	}
-	
 	//game loop
 	public void run()
 	{
@@ -93,14 +88,14 @@ public class GameEngine {
 			//guiManager.drawToScreen();
 			
 			elapsed = System.nanoTime() - start;
-			wait = targetTime - elapsed / 1000000;
+			/*wait = targetTime - elapsed / 1000000;
 			
 			if( wait < 0) wait = 5;
 			try{
 				Thread.sleep(wait);
 			}catch(Exception e) {
 				e.printStackTrace();
-			}		
+			}*/		
 			
 		}
 		

@@ -15,6 +15,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
@@ -50,6 +51,7 @@ public class GamePanel extends javax.swing.JPanel{
 		setFocusable(true);
 		requestFocus();
 		this.gameMap = gameMap;
+		keyListeners();
 	}
 	
 	public void init()
@@ -69,15 +71,15 @@ public class GamePanel extends javax.swing.JPanel{
 	{
 		g2d.setColor(Color.BLACK);
         g2d.fillRect(0, 0, 1040, 600);
-        g2d.drawImage(gameMap.getShip().getCurrentImage(), gameMap.getShip().getXpos(), gameMap.getShip().getYpos(), null);
-        ArrayList<Enemy> enemies = gameMap.enemies; 
-        /*for(int i = 0; i < enemies.size(); i++){
-        	g2d.drawImage(enemies.get(i).getCurrentImage(), enemies.get(i).getXpos(), enemies.get(i).getYpos(), null);
+        g2d.drawImage(gameMap.getShip().getCurrentImage(), gameMap.getShip().getXpos(), gameMap.getShip().getYpos(), null); 
+        
+        for(int i = 0; i < gameMap.enemies.size(); i++){
+        	g2d.drawImage(gameMap.enemies.get(i).getCurrentImage(), gameMap.enemies.get(i).getXpos(), gameMap.enemies.get(i).getYpos(), null);
+        	
         }
-        ArrayList<Fire> fires = gameMap.fires;
-        for(int i = 0; i < fires.size(); i++){
-        	g2d.drawImage(fires.get(i).getCurrentImage(), fires.get(i).getXpos(), fires.get(i).getYpos(), null);
-        }*/
+        for(int i = 0; i < gameMap.fires.size(); i++){
+        	g2d.drawImage(gameMap.fires.get(i).getCurrentImage(), gameMap.fires.get(i).getXpos(), gameMap.fires.get(i).getYpos(), null);
+        }
         repaint();	
 	}
 	
@@ -88,52 +90,40 @@ public class GamePanel extends javax.swing.JPanel{
 		g2.dispose();
 		repaint();
 	}
-
-	public void keyController(){
-		bind(KeyEvent.VK_RIGHT, new AbstractAction(){
-			@Override
-			public void actionPerformed(ActionEvent ae){
-			gameEngine.setRightPressed(true);
-		}
-		}, "right pressed", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                gameEngine.setRightPressed(false);
+	
+	public void keyListeners(){
+		
+		this.addKeyListener(new KeyAdapter() {
+            
+	        @Override
+            public void keyReleased(KeyEvent e) {
+	        	if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            		gameEngine.setRightPressed(false);
+            	}
+            	else if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            		gameEngine.setLeftPressed(false);
+            	}
+            	else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            		gameEngine.setSpacePressed(false);
+            	}
             }
-        }, "right released");
-        
-        bind(KeyEvent.VK_LEFT, new AbstractAction() {
+            
             @Override
-            public void actionPerformed(ActionEvent ae) {
-                gameEngine.setLeftPressed(true);
+            public void keyPressed(KeyEvent e){
+            	if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            		gameEngine.setRightPressed(true);
+            	}
+            	else if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            		gameEngine.setLeftPressed(true);
+            	}
+            	else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            		gameEngine.setSpacePressed(true);
+            	}
             }
-        }, "left pressed", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                gameEngine.setLeftPressed(false);
-            }
-        }, "left released");
-       
-        bind(KeyEvent.VK_SPACE, new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                gameEngine.setSpacePressed(true);
-            }
-        }, "space pressed", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                gameEngine.setSpacePressed(false);
-            }
-        }, "space released");
+        });
 	}
-	private void bind(int key, AbstractAction onPressAction, String onPressDescription,
-            AbstractAction onReleaseAction, String onReleaseDescription) {
-        
-        InputMap inputMap = panel.getInputMap(WHEN);
-        ActionMap actionMap = panel.getActionMap();
-        inputMap.put(KeyStroke.getKeyStroke(key,0,false), onPressDescription);
-        actionMap.put(onPressDescription, onPressAction);
-        inputMap.put(KeyStroke.getKeyStroke(key,0,true), onReleaseDescription);
-        actionMap.put(onReleaseDescription, onReleaseAction);
-    }
+
+	public void setEngine(GameEngine gameEngine) {
+		this.gameEngine = gameEngine;
+	}
 }

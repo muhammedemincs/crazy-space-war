@@ -4,19 +4,28 @@
  */
 package view;
 import controller.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 public class MenuPanel extends javax.swing.JPanel {
+	private BufferedImage backgroundImage ;
 	GUIManager guiManager;
 	private HelpPanel helpPanel;
 	private HighScorePanel highScorePanel;
@@ -25,8 +34,15 @@ public class MenuPanel extends javax.swing.JPanel {
 	private JFrame f;
 	
 	public MenuPanel(GUIManager guiManager) {
+		try{
+			backgroundImage = ImageIO.read(new File("/Users/muhammedemincs/git/crazy-space-war/src/crazy.jpeg"));
+		}catch(IOException ex){
+			System.out.println("error");
+		}
+		
 		this.guiManager = guiManager;
 		initComponents();
+		
 	}
 	private void initComponents() {
 		

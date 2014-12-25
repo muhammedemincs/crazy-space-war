@@ -63,5 +63,6 @@ public class GUIManager {
 	}
 	public void setEngine(GameEngine gameEngine) {
 		this.gameEngine = gameEngine;
+		this.gamePanel.setEngine(gameEngine);
 	}
 }

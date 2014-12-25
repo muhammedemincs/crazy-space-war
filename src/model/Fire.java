@@ -17,7 +17,6 @@ public class Fire extends GameObject
 	 private int destroyForce ;
 	 private int kind ;
 	 Rectangle bounds;
-	 private  BufferedImage image ;
 	
 	 //Constructor
 	 
@@ -29,11 +28,13 @@ public class Fire extends GameObject
 	 
 	 public Fire(int fireType, int x, int y,  Rectangle bounds)
 	{
+		 destroyForce = 100 ;
 		this.setFireType(fireType);
 		this.setFireTypeImg(fireType);
 		this.xPos=x;
 		this.yPos=y;
 		this.bounds = bounds;
+		System.out.println("fire created");
 
 	}
 	
@@ -44,10 +45,10 @@ public class Fire extends GameObject
 			kind = type ;
 	}
 		
-	public void setFireTypeImg(int shipType)
+	public void setFireTypeImg(int fireType)
 	{
 		try{
-				image = ImageIO.read(new File("ship"+shipType+".png"));
+				image = ImageIO.read(new File("ship1.png"));
 		}
 		catch(Exception e){
 		}
